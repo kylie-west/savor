@@ -5,7 +5,8 @@ import RecipeListItems from "../recipes/RecipeListItems";
 
 function RecipeList() {
 	return (
-		<div>
+		<div className="recipe-list">
+			<h1>My Recipes</h1>
 			<RecipeListItems />
 		</div>
 	);

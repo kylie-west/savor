@@ -1,0 +1,15 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	width: 4vw;
+	padding: 6px;
+
+	background-color: $color-gray;
+
+	div {
+		display: flex;
+		flex-direction: column;
+	}
+}

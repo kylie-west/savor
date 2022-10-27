@@ -1,0 +1,13 @@
+.recipe-list {
+	display: flex;
+	flex-direction: column;
+
+	width: 24vw;
+
+	background-color: bisque;
+
+	h1 {
+		display: inline-block;
+		padding: 12px;
+	}
+}

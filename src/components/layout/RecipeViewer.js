@@ -6,7 +6,7 @@ import RecipeToolbar from "./RecipeToolbar";
 
 function RecipeViewer() {
 	return (
-		<div>
+		<div className="recipe-viewer">
 			<RecipeToolbar />
 			<Recipe />
 		</div>

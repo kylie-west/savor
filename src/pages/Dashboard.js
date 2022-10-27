@@ -5,7 +5,7 @@ import RecipeViewer from "../components/layout/RecipeViewer";
 
 function Dashboard() {
 	return (
-		<div>
+		<div className="dashboard">
 			<Sidebar />
 			<RecipeBar />
 			<RecipeViewer />
