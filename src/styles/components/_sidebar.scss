@@ -3,10 +3,10 @@
 	flex-direction: column;
 	justify-content: space-between;
 
-	width: 4vw;
+	width: $sidebar-width;
 	padding: 6px;
 
-	background-color: $color-gray;
+	background-image: url("../images/blackpaper.png");
 
 	div {
 		display: flex;
