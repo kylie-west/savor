@@ -1,23 +1,34 @@
-import React from "react";
+function Recipe(props) {
+	const { recipes } = props;
 
-function Recipe() {
+	const recipe = recipes[0];
+	const { title, description, ingredients, directions } = recipe;
+
 	return (
 		<article className="recipe">
 			<section className="recipe-title-section">
-				<h1>Title</h1>
-				<p>Description</p>
+				<h1>{title}</h1>
+				<p>{description}</p>
 			</section>
 
 			<section>
 				<h2>Ingredients</h2>
 				<hr />
-				<ul>List items go here</ul>
+				<ul>
+					{ingredients.map((ingredient) => {
+						return <li>{ingredient}</li>;
+					})}
+				</ul>
 			</section>
 
 			<section>
 				<h2>Directions</h2>
 				<hr />
-				<ol>List items go here</ol>
+				<ol>
+					{directions.map((step) => {
+						return <li>{step}</li>;
+					})}
+				</ol>
 			</section>
 		</article>
 	);
