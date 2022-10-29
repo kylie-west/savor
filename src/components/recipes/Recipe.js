@@ -15,8 +15,8 @@ function Recipe(props) {
 				<h2>Ingredients</h2>
 				<hr />
 				<ul>
-					{ingredients.map((ingredient) => {
-						return <li>{ingredient}</li>;
+					{ingredients.map((ingredient, index) => {
+						return <li key={index}>{ingredient}</li>;
 					})}
 				</ul>
 			</section>
@@ -25,8 +25,8 @@ function Recipe(props) {
 				<h2>Directions</h2>
 				<hr />
 				<ol>
-					{directions.map((step) => {
-						return <li>{step}</li>;
+					{directions.map((step, index) => {
+						return <li key={index}>{step}</li>;
 					})}
 				</ol>
 			</section>
