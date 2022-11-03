@@ -24,6 +24,10 @@ export default function RecipeContextProvider(props) {
 		dispatch({ type: "DELETE_RECIPE", payload: id });
 	};
 
+	const updateRecipes = (recipes) => {
+		dispatch({ type: "UPDATE_RECIPES", payload: recipes });
+	};
+
 	return (
 		<recipeContext.Provider
 			value={{
@@ -31,6 +35,7 @@ export default function RecipeContextProvider(props) {
 				addRecipe,
 				editRecipe,
 				deleteRecipe,
+				updateRecipes,
 			}}>
 			{props.children}
 		</recipeContext.Provider>

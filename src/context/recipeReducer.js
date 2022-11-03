@@ -1,5 +1,3 @@
-import { recipes } from "../recipeData";
-
 export default function recipeReducer(state, action) {
 	switch (action.type) {
 		case "ADD_RECIPE":
@@ -7,7 +5,7 @@ export default function recipeReducer(state, action) {
 
 			return {
 				...state,
-				recipes: [...recipes, newRecipe],
+				recipes: [...state.recipes, newRecipe],
 			};
 
 		case "EDIT_RECIPE":
@@ -33,8 +31,12 @@ export default function recipeReducer(state, action) {
 
 			return {
 				...state,
-				recipes: recipes.filter((recipe) => recipe.id !== id),
+				recipes: state.recipes.filter((recipe) => recipe.id !== id),
 			};
+
+		// Replace all recipes in state with updated array
+		case "UPDATE_RECIPES":
+			return { ...state, recipes: action.payload };
 
 		default:
 			return state;

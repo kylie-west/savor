@@ -6,7 +6,9 @@ import { recipeContext } from "../../context/recipeContext";
 function RecipeListItems() {
 	const { recipes } = useContext(recipeContext);
 
-	return recipes.map((recipe) => <li key={recipe.id}>{recipe.title}</li>);
+	if (recipes) {
+		return recipes.map((recipe) => <li key={recipe.id}>{recipe.title}</li>);
+	} else return <p>You have no recipes.</p>;
 }
 
 export default RecipeListItems;

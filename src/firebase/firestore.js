@@ -11,7 +11,7 @@ import {
 import { app } from "./firebaseInit";
 
 // Initialize Firestore service
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 // Recipes collection ref
 const recipesRef = collection(db, "recipes");
@@ -52,6 +52,17 @@ export const getRecipe = async (id) => {
 export const addRecipeToDb = async (recipeObj) => {
 	try {
 		await addDoc(recipesRef, recipeObj);
+	} catch (e) {
+		console.error("Error creating document: ", e.message);
+	}
+};
+
+export const addTestRecipeToDb = async () => {
+	try {
+		await addDoc(recipesRef, {
+			title: "test recipe",
+			description: "this is a test",
+		});
 	} catch (e) {
 		console.error("Error creating document: ", e.message);
 	}

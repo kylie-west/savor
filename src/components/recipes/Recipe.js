@@ -7,17 +7,19 @@ function Recipe(props) {
 	return (
 		<article className="recipe">
 			<section className="recipe-title-section">
-				<h1>{title}</h1>
-				<p>{description}</p>
+				<h1>{title ? title : null}</h1>
+				<p>{description ? description : null}</p>
 			</section>
 
 			<section>
 				<h2>Ingredients</h2>
 				<hr />
 				<ul>
-					{ingredients.map((ingredient, index) => {
-						return <li key={index}>{ingredient}</li>;
-					})}
+					{ingredients
+						? ingredients.map((ingredient, index) => {
+								return <li key={index}>{ingredient}</li>;
+						  })
+						: null}
 				</ul>
 			</section>
 
@@ -25,9 +27,11 @@ function Recipe(props) {
 				<h2>Directions</h2>
 				<hr />
 				<ol>
-					{directions.map((step, index) => {
-						return <li key={index}>{step}</li>;
-					})}
+					{directions
+						? directions.map((step, index) => {
+								return <li key={index}>{step}</li>;
+						  })
+						: null}
 				</ol>
 			</section>
 		</article>
