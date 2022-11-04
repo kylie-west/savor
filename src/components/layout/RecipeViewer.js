@@ -6,12 +6,12 @@ import { recipeContext } from "../../context/recipeContext";
 
 // The section of the dashboard where the selected recipe is displayed
 
-function RecipeViewer() {
+function RecipeViewer({ setModalMode, toggleModal }) {
 	const { recipes } = useContext(recipeContext);
 
 	return (
 		<div className="recipe-viewer">
-			<RecipeToolbar />
+			<RecipeToolbar setModalMode={setModalMode} toggleModal={toggleModal} />
 			<Recipe recipes={recipes} />
 		</div>
 	);

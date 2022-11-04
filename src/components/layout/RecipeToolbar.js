@@ -1,12 +1,22 @@
-import React from "react";
+import { modes } from "../modals/modalModes";
 
 // A toolbar with options to delete, edit, and label the selected recipe
 
-function RecipeToolbar() {
+function RecipeToolbar({ setModalMode, toggleModal }) {
+	const handleClickDelete = () => {
+		setModalMode(modes.delete);
+		toggleModal();
+	};
+
+	const handleClickEdit = () => {
+		setModalMode(modes.edit);
+		toggleModal();
+	};
+
 	return (
 		<div className="recipe-toolbar">
-			<button>Delete</button>
-			<button>Edit</button>
+			<button onClick={handleClickDelete}>Delete</button>
+			<button onClick={handleClickEdit}>Edit</button>
 			<button>Labels</button>
 		</div>
 	);

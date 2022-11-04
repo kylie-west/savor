@@ -1,12 +1,17 @@
-import React from "react";
+import { modes } from "../modals/modalModes";
 
 // The main tool/nav bar, w/ options to create a recipe, view labels, view account info, and log out
 
-function Sidebar() {
+function Sidebar({ setModalMode, toggleModal }) {
+	const handleClickCreate = () => {
+		setModalMode(modes.create);
+		toggleModal();
+	};
+
 	return (
 		<nav className="sidebar">
 			<div>
-				<button>Create</button>
+				<button onClick={handleClickCreate}>Create</button>
 				<button>Labels</button>
 			</div>
 
