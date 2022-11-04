@@ -38,9 +38,20 @@ export default function recipeReducer(state, action) {
 		case "UPDATE_RECIPES":
 			return { ...state, recipes: action.payload };
 
-		// Set the current selected recipe
 		case "SET_SELECTED_RECIPE":
 			return { ...state, selectedRecipe: action.payload };
+
+		// Replace all labels in state with updated array (all labels found on current recipe objects in state)
+		case "UPDATE_LABELS":
+			const recipes = action.payload;
+			const labels = recipes.map((recipe) => recipe.labels);
+
+			// Remove duplicate labels
+			const uniqueLabels = labels.filter(
+				(label, index) => labels.indexOf(label) === index
+			);
+
+			return { ...state, labels: uniqueLabels };
 
 		default:
 			return state;
