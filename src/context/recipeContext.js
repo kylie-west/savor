@@ -1,9 +1,8 @@
 import { createContext, useReducer } from "react";
 import recipeReducer from "./recipeReducer";
-import { recipes } from "../recipeData";
 
 const initialState = {
-	recipes: recipes,
+	recipes: null,
 	selectedRecipe: null,
 };
 
@@ -28,14 +27,26 @@ export default function RecipeContextProvider(props) {
 		dispatch({ type: "UPDATE_RECIPES", payload: recipes });
 	};
 
+	const setSelectedRecipe = (recipe) => {
+		dispatch({ type: "SET_SELECTED_RECIPE", payload: recipe });
+	};
+
+	const getRecipeById = (id) => {
+		const result = state.recipes.filter((recipe) => recipe.id === id);
+		return result[0];
+	};
+
 	return (
 		<recipeContext.Provider
 			value={{
 				recipes: state.recipes,
+				selectedRecipe: state.selectedRecipe,
 				addRecipe,
 				editRecipe,
 				deleteRecipe,
 				updateRecipes,
+				setSelectedRecipe,
+				getRecipeById,
 			}}>
 			{props.children}
 		</recipeContext.Provider>

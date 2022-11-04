@@ -10,7 +10,8 @@ import useModal from "../hooks/useModal";
 import { modes } from "../components/modals/modalModes";
 
 function Dashboard() {
-	const { recipes, updateRecipes } = useContext(recipeContext);
+	const { recipes, updateRecipes, selectedRecipe, setSelectedRecipe } =
+		useContext(recipeContext);
 	const { isShowing, toggle } = useModal();
 	const [modalMode, setModalMode] = useState(modes.create);
 
@@ -24,17 +25,27 @@ function Dashboard() {
 			updateRecipes(recipesArray);
 		});
 
+		if (recipes && !selectedRecipe) {
+			setSelectedRecipe(recipes[0]);
+		}
+
 		// Unsubscribe when component is unmounted
 		return () => unsubscribe();
 	}, []);
 
 	return (
 		<div className="dashboard">
-			<Modal isShowing={isShowing} toggle={toggle} modalMode={modalMode} />
+			<Modal
+				isShowing={isShowing}
+				toggle={toggle}
+				modalMode={modalMode}
+				selectedRecipe={selectedRecipe}
+				setSelectedRecipe={setSelectedRecipe}
+			/>
 			<Sidebar setModalMode={setModalMode} toggleModal={toggle} />
 			<RecipeList recipes={recipes} />
 			<RecipeViewer
-				recipes={recipes}
+				selectedRecipe={selectedRecipe}
 				setModalMode={setModalMode}
 				toggleModal={toggle}
 			/>

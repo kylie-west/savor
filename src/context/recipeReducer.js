@@ -38,6 +38,10 @@ export default function recipeReducer(state, action) {
 		case "UPDATE_RECIPES":
 			return { ...state, recipes: action.payload };
 
+		// Set the current selected recipe
+		case "SET_SELECTED_RECIPE":
+			return { ...state, selectedRecipe: action.payload };
+
 		default:
 			return state;
 	}

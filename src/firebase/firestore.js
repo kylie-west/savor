@@ -78,8 +78,8 @@ export const deleteRecipeFromDb = async (id) => {
 	}
 };
 
-export const updateRecipeInDb = async (recipeObj) => {
-	const docRef = doc(db, "recipes", recipeObj.id);
+export const updateRecipeInDb = async (recipeObj, id) => {
+	const docRef = doc(db, "recipes", id);
 
 	try {
 		updateDoc(docRef, recipeObj);
