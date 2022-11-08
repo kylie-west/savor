@@ -26,26 +26,26 @@
 		border-radius: 5px;
 
 		background-color: #fff;
-	}
 
-	.modal-header {
-		padding: 20px;
-		border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
-	}
+		.modal-header {
+			padding: 20px;
+			border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+		}
 
-	.modal-content {
-		padding: 20px;
-	}
+		.modal-content {
+			padding: 20px;
+		}
 
-	.modal-footer {
-		display: flex;
-		justify-content: flex-end;
+		.modal-footer {
+			display: flex;
+			justify-content: flex-end;
 
-		padding: 20px;
-		border-top: 1px rgba(0, 0, 0, 0.2) solid;
+			padding: 20px;
+			border-top: 1px rgba(0, 0, 0, 0.2) solid;
 
-		button {
-			margin-left: 1rem;
+			button {
+				margin-left: 1rem;
+			}
 		}
 	}
 }

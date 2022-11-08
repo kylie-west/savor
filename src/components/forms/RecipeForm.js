@@ -90,7 +90,7 @@ function RecipeForm({ modalMode, toggleModal }) {
 			validationSchema={validationSchema}
 			enableReinitialize>
 			{({ errors, touched }) => (
-				<Form id="recipe-form" className="recipe-form">
+				<Form id="recipe-form" className="form recipe-form">
 					<div className="field-wrapper">
 						<label htmlFor="title">Title</label>
 						<div className="error">{touched.title ? errors.title : null}</div>

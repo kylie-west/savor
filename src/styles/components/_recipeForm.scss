@@ -1,42 +1,15 @@
 .recipe-form {
-	display: flex;
-	flex-direction: column;
-
 	label {
-		font-size: 14px;
 		font-weight: 800;
-	}
-
-	input {
-		width: 100%;
 	}
 
 	textarea {
 		min-height: 50px;
-		height: 75px;
+		height: 100px;
 		max-height: 200px;
 
 		min-width: 100%;
 		max-width: 100%;
-	}
-
-	input,
-	textarea {
-		margin-top: 5px;
-		padding: 5px;
-	}
-
-	.error {
-		color: red;
-	}
-
-	.field-wrapper {
-		margin-bottom: 10px;
-	}
-
-	.flex {
-		display: flex;
-		justify-content: space-between;
 	}
 
 	.message {

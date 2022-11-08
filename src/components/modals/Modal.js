@@ -35,15 +35,21 @@ const Modal = ({
 						</div>
 
 						<div className="modal-footer">
+							<button onClick={toggle} className="btn btn-secondary">
+								Cancel
+							</button>
 							{modalMode === modes.delete ? (
-								<button onClick={handleClickDelete}>{modalMode.btnName}</button>
+								<button onClick={handleClickDelete} className="btn btn-warning">
+									{modalMode.btnName}
+								</button>
 							) : (
-								<button type="submit" form="recipe-form">
+								<button
+									type="submit"
+									form="recipe-form"
+									className="btn btn-primary">
 									{modalMode.btnName}
 								</button>
 							)}
-
-							<button onClick={toggle}>Close</button>
 						</div>
 					</div>
 				</div>

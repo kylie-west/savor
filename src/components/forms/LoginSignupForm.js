@@ -13,8 +13,8 @@ function LoginSignupForm({ page }) {
 	};
 
 	const validationSchema = Yup.object({
-		email: Yup.string().email().required(),
-		password: Yup.string().min(8),
+		email: Yup.string().email().required("Required"),
+		password: Yup.string().min(8).required("Required"),
 	});
 
 	const handleSubmit = async ({ email, password }) => {
@@ -33,11 +33,11 @@ function LoginSignupForm({ page }) {
 				initialValues={initialValues}
 				validationSchema={validationSchema}
 				onSubmit={handleSubmit}>
-				{(errors, touched) => (
-					<Form id="login-signup-form" className="form-fields">
+				{({ errors, touched }) => (
+					<Form id="login-signup-form" className="form">
 						<div className="field-wrapper">
 							<label htmlFor="email">Email</label>
-							{/* <div className="error">{touched.email ? errors.email : null}</div> */}
+							<div className="error">{touched.email ? errors.email : null}</div>
 							<Field
 								id="email"
 								name="email"
@@ -49,9 +49,9 @@ function LoginSignupForm({ page }) {
 
 						<div className="field-wrapper">
 							<label htmlFor="password">Password</label>
-							{/* <div className="error">
-						{touched.password ? errors.password : null}
-					    </div> */}
+							<div className="error">
+								{touched.password ? errors.password : null}
+							</div>
 							<Field
 								id="password"
 								name="password"
