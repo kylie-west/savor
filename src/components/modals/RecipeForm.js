@@ -3,6 +3,7 @@ import { recipeContext } from "../../context/recipeContext";
 import { Formik, Field, Form } from "formik";
 import { modes } from "../modals/modalModes";
 import { addRecipeToDb, updateRecipeInDb } from "../../firebase/firestore";
+import * as Yup from "yup";
 
 function RecipeForm({ modalMode, toggleModal }) {
 	const { selectedRecipe, setSelectedRecipe } = useContext(recipeContext);
@@ -60,41 +61,84 @@ function RecipeForm({ modalMode, toggleModal }) {
 		directions: "",
 	};
 
+	const validationSchema = Yup.object({
+		title: Yup.string()
+			.max(80, "Title must be less than 80 characters")
+			.required("Required"),
+		description: Yup.string().max(
+			400,
+			"Description must be less than 400 characters"
+		),
+		ingredients: Yup.string()
+			.max(
+				10000,
+				"That's a lot of ingredients! The limit is 10,000 characters."
+			)
+			.required("Required"),
+		directions: Yup.string()
+			.max(
+				10000,
+				"This recipe is too complicated! The limit is 10,000 characters."
+			)
+			.required("Required"),
+	});
+
 	return (
 		<Formik
 			initialValues={formValues || initialValues}
 			onSubmit={handleSubmit}
+			validationSchema={validationSchema}
 			enableReinitialize>
-			<Form id="recipe-form" className="recipe-form">
-				<label htmlFor="title">Title</label>
-				<Field id="title" name="title" placeholder="Cake" as="input" />
+			{({ errors, touched }) => (
+				<Form id="recipe-form" className="recipe-form">
+					<div className="field-wrapper">
+						<label htmlFor="title">Title</label>
+						<div className="error">{touched.title ? errors.title : null}</div>
+						<Field id="title" name="title" placeholder="Cake" as="input" />
+					</div>
 
-				<label htmlFor="description">Description</label>
-				<Field
-					id="description"
-					name="description"
-					placeholder="A real cake recipe"
-					as="textarea"
-				/>
+					<div className="field-wrapper">
+						<label htmlFor="description">Description</label>
+						<div className="error">
+							{touched.description ? errors.description : null}
+						</div>
+						<Field
+							id="description"
+							name="description"
+							placeholder="A real cake recipe"
+							as="textarea"
+						/>
+					</div>
 
-				<label htmlFor="ingredients">Ingredients</label>
-				<p>Type each ingredient on a new line</p>
-				<Field
-					id="ingredients"
-					name="ingredients"
-					placeholder="milk&#10;eggs&#10;flour&#10;sugar"
-					as="textarea"
-				/>
+					<div className="field-wrapper">
+						<label htmlFor="ingredients">Ingredients</label>
+						<p className="error">
+							{touched.ingredients ? errors.ingredients : null}
+						</p>
+						<Field
+							id="ingredients"
+							name="ingredients"
+							placeholder="milk&#10;eggs&#10;flour&#10;sugar"
+							as="textarea"
+						/>
+						<p className="message">Type each ingredient on a new line</p>
+					</div>
 
-				<label htmlFor="directions">Directions</label>
-				<p>Type each step on a new line</p>
-				<Field
-					id="directions"
-					name="directions"
-					placeholder="Mix everything together&#10;Bake at 350 degrees for 30 minutes&#10;Let cool&#10;Serve"
-					as="textarea"
-				/>
-			</Form>
+					<div className="field-wrapper">
+						<label htmlFor="directions">Directions</label>
+						<p className="error">
+							{touched.directions ? errors.directions : null}
+						</p>
+						<Field
+							id="directions"
+							name="directions"
+							placeholder="Mix everything together&#10;Bake at 350 degrees for 30 minutes&#10;Let cool&#10;Serve"
+							as="textarea"
+						/>
+						<p className="message">Type each ingredient on a new line</p>
+					</div>
+				</Form>
+			)}
 		</Formik>
 	);
 }

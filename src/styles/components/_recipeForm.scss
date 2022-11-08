@@ -7,14 +7,8 @@
 		font-weight: 800;
 	}
 
-	p {
-		font-size: 12px;
-		font-style: italic;
-	}
-
 	input {
-		padding: 5px;
-		margin: 5px 0 20px 0;
+		width: 100%;
 	}
 
 	textarea {
@@ -24,8 +18,29 @@
 
 		min-width: 100%;
 		max-width: 100%;
+	}
 
+	input,
+	textarea {
+		margin-top: 5px;
 		padding: 5px;
-		margin: 5px 0 20px 0;
+	}
+
+	.error {
+		color: red;
+	}
+
+	.field-wrapper {
+		margin-bottom: 10px;
+	}
+
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.message {
+		font-style: italic;
+		text-align: end;
 	}
 }

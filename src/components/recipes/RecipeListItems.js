@@ -18,7 +18,9 @@ function RecipeListItems() {
 				key={recipe.id}
 				id={recipe.id}
 				onClick={handleClick}
-				className={`${recipe.id === selectedRecipe.id ? "active" : ""}`}>
+				className={`${
+					selectedRecipe && recipe.id === selectedRecipe.id ? "active" : ""
+				}`}>
 				{recipe.title}
 			</li>
 		));

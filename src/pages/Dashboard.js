@@ -25,12 +25,17 @@ function Dashboard() {
 			updateRecipes(recipesArray);
 		});
 
+		// Unsubscribe when component is unmounted
+		return () => {
+			console.log("Unsubscribe");
+			unsubscribe();
+		};
+	}, []);
+
+	useEffect(() => {
 		if (recipes && !selectedRecipe) {
 			setSelectedRecipe(recipes[0]);
 		}
-
-		// Unsubscribe when component is unmounted
-		return () => unsubscribe();
 	}, []);
 
 	return (
