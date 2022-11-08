@@ -1,8 +1,12 @@
 import { modes } from "../modals/modalModes";
+import { logOut } from "../../firebase/firebaseAuth";
+import { useNavigate } from "react-router-dom";
 
 // The main tool/nav bar, w/ options to create a recipe, view labels, view account info, and log out
 
 function Sidebar({ setModalMode, toggleModal }) {
+	const navigate = useNavigate();
+
 	const handleClickCreate = () => {
 		setModalMode(modes.create);
 		toggleModal();
@@ -17,7 +21,13 @@ function Sidebar({ setModalMode, toggleModal }) {
 
 			<div>
 				<button>Account</button>
-				<button>Log Out</button>
+				<button
+					onClick={() => {
+						logOut();
+						navigate("/login");
+					}}>
+					Log Out
+				</button>
 			</div>
 		</nav>
 	);

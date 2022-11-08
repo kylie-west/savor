@@ -1,7 +1,13 @@
 import React from "react";
+import LoginSignup from "../components/layout/LoginSignup";
+import LoginSignupForm from "../components/LoginSignupForm";
 
 function Signup() {
-	return <div>Signup</div>;
+	return (
+		<LoginSignup page={"signup"}>
+			<LoginSignupForm page={"signup"} />
+		</LoginSignup>
+	);
 }
 
 export default Signup;

@@ -1,0 +1,78 @@
+.login-signup {
+	height: 100vh;
+	background-image: url("../images/ricepaperdarker.png");
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		height: 20vh;
+
+		color: #fff;
+		background-color: $color-primary-dark;
+
+		h1 {
+			font-size: 3rem;
+			font-weight: 400;
+
+			span {
+				font-weight: 100;
+			}
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-top: 100px;
+	}
+
+	.card {
+		width: 30vw;
+
+		border-radius: 5px;
+		box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+		background-color: #fff;
+
+		&-header {
+			padding: 15px 30px;
+			border-radius: 5px 5px 0 0;
+			color: #fff;
+			background-color: $color-primary-dark;
+
+			h2 {
+				font-weight: 400;
+			}
+		}
+
+		.login-signup-form {
+			display: flex;
+			flex-direction: column;
+			align-items: end;
+			padding: 30px;
+
+			.link {
+				font-size: 1.2rem;
+				font-weight: 800;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&:visited {
+					color: $color-primary-dark;
+				}
+			}
+
+			.btn-group {
+				display: flex;
+				align-items: center;
+				gap: 2rem;
+			}
+		}
+	}
+}
