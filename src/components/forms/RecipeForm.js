@@ -44,7 +44,7 @@ function RecipeForm({ modalMode, toggleModal }) {
 	};
 
 	useEffect(() => {
-		if (modalMode === modes.edit) {
+		if (selectedRecipe && modalMode === modes.edit) {
 			setFormValues({
 				title: selectedRecipe.title,
 				description: selectedRecipe.description,
@@ -135,7 +135,7 @@ function RecipeForm({ modalMode, toggleModal }) {
 							placeholder="Mix everything together&#10;Bake at 350 degrees for 30 minutes&#10;Let cool&#10;Serve"
 							as="textarea"
 						/>
-						<p className="message">Type each ingredient on a new line</p>
+						<p className="message">Type each step on a new line</p>
 					</div>
 				</Form>
 			)}

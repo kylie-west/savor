@@ -7,7 +7,9 @@ import RecipeToolbar from "./RecipeToolbar";
 function RecipeViewer({ setModalMode, toggleModal, selectedRecipe }) {
 	return (
 		<div className="recipe-viewer">
-			<RecipeToolbar setModalMode={setModalMode} toggleModal={toggleModal} />
+			{selectedRecipe ? (
+				<RecipeToolbar setModalMode={setModalMode} toggleModal={toggleModal} />
+			) : null}
 			<Recipe selectedRecipe={selectedRecipe} />
 		</div>
 	);

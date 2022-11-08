@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { createUser, logInWithEmail } from "../firebase/firebaseAuth";
+import { createUser, logInWithEmail } from "../../firebase/firebaseAuth";
 
 function LoginSignupForm({ page }) {
 	const navigate = useNavigate();

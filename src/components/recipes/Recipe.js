@@ -34,7 +34,7 @@ function Recipe({ selectedRecipe }) {
 				</section>
 			</article>
 		);
-	} else return <p>No recipe selected</p>;
+	} else return null;
 }
 
 export default Recipe;

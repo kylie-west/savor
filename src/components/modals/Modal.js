@@ -1,5 +1,5 @@
 import { modes } from "./modalModes";
-import RecipeForm from "./RecipeForm";
+import RecipeForm from "../forms/RecipeForm";
 import { deleteRecipeFromDb } from "../../firebase/firestore";
 
 const Modal = ({
