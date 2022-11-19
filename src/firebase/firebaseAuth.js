@@ -10,6 +10,7 @@ export const auth = getAuth(app);
 
 export const createUser = async (email, password) => {
 	let user;
+	let error;
 
 	try {
 		const userCredential = await createUserWithEmailAndPassword(
@@ -19,14 +20,16 @@ export const createUser = async (email, password) => {
 		);
 		user = userCredential.user;
 	} catch (e) {
+		error = e;
 		console.error(e.code, e.message);
 	}
 
-	return user;
+	return { user, error };
 };
 
 export const logInWithEmail = async (email, password) => {
 	let user;
+	let error;
 
 	try {
 		const userCredential = await signInWithEmailAndPassword(
@@ -36,10 +39,12 @@ export const logInWithEmail = async (email, password) => {
 		);
 		user = userCredential.user;
 	} catch (e) {
+		error = e;
 		console.error(e.code, e.message);
+		return;
 	}
 
-	return user;
+	return { user, error };
 };
 
 export const logOut = async () => {

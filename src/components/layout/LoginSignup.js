@@ -5,7 +5,7 @@ function LoginSignup({ page, children }) {
 		<div className="login-signup">
 			<div className="header">
 				<h1>
-					Savor - <span>Your Online Recipe Box</span>
+					Savor - <span>An Online Recipe Box</span>
 				</h1>
 			</div>
 			<div className="wrapper">

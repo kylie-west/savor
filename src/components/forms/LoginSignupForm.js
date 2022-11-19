@@ -19,7 +19,8 @@ function LoginSignupForm({ page }) {
 
 	const handleSubmit = async ({ email, password }) => {
 		if (page === "signup") {
-			await createUser(email, password);
+			const { user, error } = await createUser(email, password);
+
 			navigate("/");
 		} else if (page === "login") {
 			await logInWithEmail(email, password);

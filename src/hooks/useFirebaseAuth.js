@@ -1,6 +1,5 @@
 import { auth } from "../firebase/firebaseAuth";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useFirebaseAuth = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -8,6 +7,7 @@ const useFirebaseAuth = () => {
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => {
 			user ? setCurrentUser(user) : setCurrentUser(null);
+			console.log(user);
 		});
 
 		return () => {
