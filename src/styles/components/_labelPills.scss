@@ -1,0 +1,15 @@
+.label-pills {
+	display: flex;
+	gap: 10px;
+
+	list-style-type: none;
+
+	.pill {
+		display: block;
+		padding: 5px 8px;
+		border-radius: 25px;
+
+		color: #fff;
+		background-color: $color-primary-dark;
+	}
+}

@@ -14,8 +14,13 @@ import { modes } from "../components/modals/modalModes";
 function Dashboard({ user }) {
 	const { currentUser, setCurrentUser } = useContext(authContext);
 
-	const { recipes, updateRecipes, selectedRecipe, setSelectedRecipe } =
-		useContext(recipeContext);
+	const {
+		recipes,
+		updateRecipes,
+		selectedRecipe,
+		setSelectedRecipe,
+		getLabels,
+	} = useContext(recipeContext);
 
 	const { isShowing, toggle } = useModal();
 
@@ -40,6 +45,7 @@ function Dashboard({ user }) {
 					});
 
 					updateRecipes(recipesArray);
+					getLabels(recipesArray);
 				}
 			);
 		} else return null;

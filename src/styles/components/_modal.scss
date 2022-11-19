@@ -21,13 +21,27 @@
 	height: 100vh;
 
 	.modal {
-		border-radius: 5px;
+		border-radius: 6px;
 
 		background-color: #fff;
 
 		.modal-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
 			padding: 20px;
 			border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+
+			h1 {
+				font-size: 2rem;
+			}
+
+			.close {
+				font-size: 16px;
+				font-weight: 800;
+				cursor: pointer;
+			}
 		}
 
 		.modal-content {
@@ -44,6 +58,26 @@
 			button {
 				margin-left: 1rem;
 			}
+		}
+	}
+
+	.labels-mode {
+		width: 300px;
+
+		input[type="text"] {
+			width: 100%;
+			padding: 5px;
+			margin-bottom: 10px;
+		}
+
+		.modal-header {
+			background-color: $color-primary-dark;
+			color: $color-primary-subtle;
+			border-radius: 5px 5px 0 0;
+		}
+
+		.modal-content {
+			font-size: 1.4rem;
 		}
 	}
 }

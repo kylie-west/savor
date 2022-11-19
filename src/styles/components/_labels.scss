@@ -1,0 +1,18 @@
+.labels {
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+
+		li {
+			display: flex;
+			align-items: center;
+
+			list-style-type: none;
+
+			input {
+				margin-right: 10px;
+			}
+		}
+	}
+}

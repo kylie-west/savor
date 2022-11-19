@@ -4,6 +4,7 @@ import recipeReducer from "./recipeReducer";
 const initialState = {
 	recipes: null,
 	selectedRecipe: null,
+	labels: null,
 };
 
 export const recipeContext = createContext();
@@ -36,8 +37,8 @@ export default function RecipeContextProvider(props) {
 		return result[0];
 	};
 
-	const updateLabels = (recipes) => {
-		dispatch({ type: "UPDATE_LABELS", payload: recipes });
+	const getLabels = (recipes) => {
+		dispatch({ type: "GET_LABELS", payload: recipes });
 	};
 
 	return (
@@ -45,13 +46,14 @@ export default function RecipeContextProvider(props) {
 			value={{
 				recipes: state.recipes,
 				selectedRecipe: state.selectedRecipe,
+				labels: state.labels,
 				addRecipe,
 				editRecipe,
 				deleteRecipe,
 				updateRecipes,
 				setSelectedRecipe,
 				getRecipeById,
-				updateLabels,
+				getLabels,
 			}}>
 			{props.children}
 		</recipeContext.Provider>

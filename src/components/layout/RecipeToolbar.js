@@ -13,11 +13,16 @@ function RecipeToolbar({ setModalMode, toggleModal }) {
 		toggleModal();
 	};
 
+	const handleClickLabels = () => {
+		setModalMode(modes.labels);
+		toggleModal();
+	};
+
 	return (
 		<div className="recipe-toolbar">
 			<button onClick={handleClickDelete}>Delete</button>
 			<button onClick={handleClickEdit}>Edit</button>
-			<button>Labels</button>
+			<button onClick={handleClickLabels}>Labels</button>
 		</div>
 	);
 }

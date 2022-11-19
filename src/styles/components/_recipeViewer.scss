@@ -8,4 +8,10 @@
 	width: calc(100vw - $recipe-list-width - $sidebar-width);
 	height: 100%;
 	padding: 24px 200px;
+
+	.recipe-top {
+		display: flex;
+		justify-content: flex-start;
+		width: 100%;
+	}
 }
