@@ -13,7 +13,7 @@ export default function LabelCheckbox({
 		if (selectedRecipe && selectedRecipe.labels.includes(label)) {
 			setIsChecked(true);
 		} else setIsChecked(false);
-	}, []);
+	}, [label]);
 
 	const handleChange = () => {
 		if (!isChecked) {

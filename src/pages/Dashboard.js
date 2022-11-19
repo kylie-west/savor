@@ -30,7 +30,7 @@ function Dashboard({ user }) {
 		if (user && !currentUser) {
 			setCurrentUser(user);
 		}
-	}, [user]);
+	}, []);
 
 	useEffect(() => {
 		let unsubscribe;
@@ -48,7 +48,7 @@ function Dashboard({ user }) {
 					getLabels(recipesArray);
 				}
 			);
-		} else return null;
+		} else return;
 
 		// Unsubscribe when component is unmounted
 		return () => {

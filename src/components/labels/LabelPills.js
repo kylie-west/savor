@@ -4,8 +4,10 @@ export default function LabelPills({ selectedRecipe }) {
 	if (labels) {
 		return (
 			<ul className="label-pills">
-				{labels.map((label) => (
-					<li className="pill">{label}</li>
+				{labels.map((label, index) => (
+					<li key={index} className="pill">
+						{label}
+					</li>
 				))}
 			</ul>
 		);

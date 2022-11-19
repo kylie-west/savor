@@ -1,11 +1,12 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { recipeContext } from "../../context/recipeContext";
 import LabelsList from "./LabelsList";
 import { updateRecipeInDb } from "../../firebase/firestore";
 
 export default function Labels() {
+	const [labels, setLabels] = useState([]);
 	const [inputValue, setInputValue] = useState("");
-	const { labels, selectedRecipe, setSelectedRecipe } =
+	const { recipes, selectedRecipe, setSelectedRecipe } =
 		useContext(recipeContext);
 
 	const handleChange = (e) => {
@@ -19,13 +20,27 @@ export default function Labels() {
 
 		const updatedRecipe = {
 			...selectedRecipe,
-			labels: [...labels, inputValue],
+			labels: [...selectedRecipe.labels, inputValue],
 		};
 
 		updateRecipeInDb(updatedRecipe, selectedRecipe.id);
-		setSelectedRecipe({ ...selectedRecipe, labels: [...labels, inputValue] });
+		setSelectedRecipe(updatedRecipe);
 		setInputValue("");
 	};
+
+	useEffect(() => {
+		if (recipes) {
+			const labelArrays = recipes.map((recipe) => recipe.labels);
+			const labels = labelArrays.flat();
+
+			// Remove duplicate labels
+			const uniqueLabels = labels.filter(
+				(label, index) => labels.indexOf(label) === index
+			);
+
+			setLabels(uniqueLabels);
+		}
+	}, [recipes]);
 
 	return (
 		<div className="labels">
