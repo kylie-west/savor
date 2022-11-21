@@ -21,6 +21,9 @@
 	height: 100vh;
 
 	.modal {
+		max-height: 80vh;
+		max-width: 95vw;
+
 		border-radius: 6px;
 
 		background-color: #fff;
@@ -46,11 +49,16 @@
 
 		.modal-content {
 			padding: 20px;
+			max-height: 60vh;
+			overflow-y: auto;
+			overflow-x: hidden;
 		}
 
 		.modal-footer {
 			display: flex;
 			justify-content: flex-end;
+
+			height: fit-content;
 
 			padding: 20px;
 			border-top: 1px rgba(0, 0, 0, 0.2) solid;

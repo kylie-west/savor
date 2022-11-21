@@ -17,3 +17,11 @@
 		text-align: end;
 	}
 }
+
+@media screen and (max-width: $bp-md) {
+	.recipe-form {
+		textarea {
+			max-width: 80vw;
+		}
+	}
+}

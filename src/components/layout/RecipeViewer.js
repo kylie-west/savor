@@ -13,6 +13,7 @@ function RecipeViewer({ setModalMode, toggleModal, selectedRecipe }) {
 					<RecipeToolbar
 						setModalMode={setModalMode}
 						toggleModal={toggleModal}
+						className="recipe-toolbar"
 					/>
 					<LabelPills selectedRecipe={selectedRecipe} />
 				</div>

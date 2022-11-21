@@ -6,10 +6,11 @@
 
 	.pill {
 		display: block;
-		padding: 5px 8px;
+		padding: 4px 8px;
 		border-radius: 25px;
 
 		color: #fff;
 		background-color: $color-primary-dark;
+		font-size: 1.1rem;
 	}
 }

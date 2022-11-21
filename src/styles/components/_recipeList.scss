@@ -5,6 +5,8 @@
 	width: $recipe-list-width;
 
 	background-image: url(../images/ricepaperdarker.png);
+	z-index: 10;
+	box-shadow: 5px 0 20px rgba(0, 0, 0, 0.15);
 
 	h1 {
 		display: inline-block;
@@ -19,6 +21,7 @@
 		list-style-type: none;
 		padding: 12px;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		font-size: 1.4rem;
 		cursor: pointer;
 
 		&:hover,
@@ -34,6 +37,8 @@
 		max-width: 100vw;
 		height: fit-content;
 		max-height: 30vh;
+
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 
 		ul {
 			height: 20vh;

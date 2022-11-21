@@ -1,0 +1,19 @@
+.recipe-top {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+
+	width: 100%;
+}
+
+@media screen and (max-width: $bp-lg) {
+	.recipe-top {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: $bp-md) {
+	.recipe-top {
+		align-items: center;
+	}
+}
