@@ -27,15 +27,10 @@ function RecipeForm({ modalMode, toggleModal }) {
 			description: values.description,
 			ingredients: convertToArray(values.ingredients),
 			directions: convertToArray(values.directions),
+			labels: selectedRecipe.labels || [],
+			createdAt: selectedRecipe.createdAt || new Date(),
+			uid: selectedRecipe.uid || currentUser.uid,
 		};
-
-		if (!recipe.createdAt) {
-			recipe.createdAt = new Date();
-		}
-
-		if (!recipe.uid) {
-			recipe.uid = currentUser.uid;
-		}
 
 		if (modalMode === modes.create) {
 			await addRecipeToDb(recipe);
