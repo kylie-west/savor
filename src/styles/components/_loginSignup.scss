@@ -76,3 +76,11 @@
 		}
 	}
 }
+
+@media screen and (max-width: $bp-md) {
+	.login-signup {
+		.card {
+			width: 80vw;
+		}
+	}
+}

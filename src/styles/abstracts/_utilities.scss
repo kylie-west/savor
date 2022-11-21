@@ -32,8 +32,8 @@
 		background-color: $color-red;
 
 		&:hover {
-			color: $color-red;
-			background-color: #fff;
+			color: #fff;
+			background-color: $color-red-dark;
 			transition: 0.1s;
 		}
 	}

@@ -15,18 +15,24 @@ function Sidebar({ setModalMode, toggleModal }) {
 	return (
 		<nav className="sidebar">
 			<div>
-				<button onClick={handleClickCreate}>Create</button>
-				<button>Labels</button>
+				<button onClick={handleClickCreate}>
+					<i className="fa-solid fa-circle-plus"></i>
+				</button>
+				<button>
+					<i className="fa-solid fa-tags"></i>
+				</button>
 			</div>
 
 			<div>
-				<button>Account</button>
+				<button>
+					<i className="fa-solid fa-user"></i>
+				</button>
 				<button
 					onClick={() => {
 						logOut();
 						navigate("/login");
 					}}>
-					Log Out
+					<i className="fa-solid fa-right-from-bracket"></i>
 				</button>
 			</div>
 		</nav>

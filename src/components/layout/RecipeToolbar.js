@@ -20,9 +20,15 @@ function RecipeToolbar({ setModalMode, toggleModal }) {
 
 	return (
 		<div className="recipe-toolbar">
-			<button onClick={handleClickDelete}>Delete</button>
-			<button onClick={handleClickEdit}>Edit</button>
-			<button onClick={handleClickLabels}>Labels</button>
+			<button onClick={handleClickDelete} className="delete-btn">
+				<i className="fa-solid fa-trash"></i>
+			</button>
+			<button onClick={handleClickEdit}>
+				<i className="fa-solid fa-pen-to-square"></i>
+			</button>
+			<button onClick={handleClickLabels}>
+				<i className="fa-solid fa-tag"></i>
+			</button>
 		</div>
 	);
 }
