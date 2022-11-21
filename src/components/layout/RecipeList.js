@@ -7,7 +7,9 @@ function RecipeList() {
 	return (
 		<div className="recipe-list">
 			<h1>My Recipes</h1>
-			<RecipeListItems />
+			<ul>
+				<RecipeListItems />
+			</ul>
 		</div>
 	);
 }

@@ -4,3 +4,9 @@
 
 	font-size: 12px;
 }
+
+@media screen and (max-width: $bp-md) {
+	.dashboard {
+		flex-direction: column;
+	}
+}

@@ -18,3 +18,16 @@
 		flex-direction: column;
 	}
 }
+
+@media screen and (max-width: $bp-md) {
+	.sidebar {
+		flex-direction: row;
+		width: 100vw;
+		padding: 18px 18px 0 18px;
+
+		div {
+			flex-direction: row;
+			gap: 10px;
+		}
+	}
+}

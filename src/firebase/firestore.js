@@ -2,11 +2,12 @@ import {
 	getFirestore,
 	collection,
 	doc,
-	getDocs,
 	getDoc,
 	addDoc,
 	deleteDoc,
 	updateDoc,
+	query,
+	where,
 } from "firebase/firestore";
 import { app } from "./firebaseInit";
 
@@ -17,12 +18,12 @@ export const db = getFirestore(app);
 const recipesRef = collection(db, "recipes");
 
 // Get all recipes
-export const getRecipes = async () => {
+export const getRecipes = async (uid) => {
 	let snapshot;
 	const recipes = [];
 
 	try {
-		snapshot = await getDocs(recipesRef);
+		snapshot = await query(recipesRef, where("uid", "==", uid));
 	} catch (e) {
 		console.error("Error retrieving documents: ", e.message);
 	}
