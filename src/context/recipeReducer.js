@@ -44,8 +44,15 @@ export default function recipeReducer(state, action) {
 		// Replace all labels in state with updated array (all labels found on current recipe objects in state)
 		case "GET_LABELS":
 			const recipes = action.payload;
+
+			const alphabetize = (a, b) => {
+				a = a.toLowerCase();
+				b = b.toLowerCase();
+				return a > b ? 1 : a < b ? -1 : 0;
+			};
+
 			const labelArrays = recipes.map((recipe) => recipe.labels);
-			const labels = labelArrays.flat();
+			const labels = labelArrays.flat().sort(alphabetize);
 
 			// Remove duplicate labels
 			const uniqueLabels = labels.filter(
@@ -53,6 +60,9 @@ export default function recipeReducer(state, action) {
 			);
 
 			return { ...state, labels: uniqueLabels };
+
+		case "UPDATE_LABELS":
+			return { ...state, labels: action.payload };
 
 		default:
 			return state;

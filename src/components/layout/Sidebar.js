@@ -33,9 +33,9 @@ function Sidebar({
 			</div>
 
 			<div>
-				<button>
+				{/* <button>
 					<i className="fa-solid fa-user"></i>
-				</button>
+				</button> */}
 				<button
 					onClick={() => {
 						logOut();

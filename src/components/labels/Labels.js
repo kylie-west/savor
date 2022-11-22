@@ -4,9 +4,8 @@ import LabelsList from "./LabelsList";
 import { updateRecipeInDb } from "../../firebase/firestore";
 
 export default function Labels() {
-	const [labels, setLabels] = useState([]);
 	const [inputValue, setInputValue] = useState("");
-	const { recipes, selectedRecipe, setSelectedRecipe } =
+	const { labels, getLabels, recipes, selectedRecipe, setSelectedRecipe } =
 		useContext(recipeContext);
 
 	const handleChange = (e) => {
@@ -30,15 +29,7 @@ export default function Labels() {
 
 	useEffect(() => {
 		if (recipes) {
-			const labelArrays = recipes.map((recipe) => recipe.labels);
-			const labels = labelArrays.flat();
-
-			// Remove duplicate labels
-			const uniqueLabels = labels.filter(
-				(label, index) => labels.indexOf(label) === index
-			);
-
-			setLabels(uniqueLabels);
+			getLabels(recipes);
 		}
 	}, [recipes]);
 

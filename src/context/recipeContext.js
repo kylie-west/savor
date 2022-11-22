@@ -41,6 +41,10 @@ export default function RecipeContextProvider(props) {
 		dispatch({ type: "GET_LABELS", payload: recipes });
 	};
 
+	const updateLabels = (labels) => {
+		dispatch({ type: "UPDATE_LABELS", payload: labels });
+	};
+
 	return (
 		<recipeContext.Provider
 			value={{
@@ -54,6 +58,7 @@ export default function RecipeContextProvider(props) {
 				setSelectedRecipe,
 				getRecipeById,
 				getLabels,
+				updateLabels,
 			}}>
 			{props.children}
 		</recipeContext.Provider>
