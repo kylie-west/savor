@@ -10,11 +10,13 @@
 @media screen and (max-width: $bp-lg) {
 	.recipe-top {
 		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
 	}
 }
 
 @media screen and (max-width: $bp-md) {
 	.recipe-top {
-		align-items: center;
+		margin-top: 30px;
 	}
 }

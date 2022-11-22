@@ -1,0 +1,99 @@
+.label-drawer {
+	position: absolute;
+	left: $recipe-list-width * -1;
+	z-index: 20;
+
+	height: 100vh;
+	width: $recipe-list-width + 20px;
+
+	background-image: url(../images/ricepaperdarker.png);
+	box-shadow: 5px 0 50px rgba(0, 0, 0, 0.15);
+
+	transition: 0.3s transform;
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+
+		list-style-type: none;
+		padding: 12px;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+		font-size: 1.4rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		cursor: pointer;
+
+		&:hover,
+		&.active {
+			box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05);
+		}
+
+		i {
+			color: $color-gray;
+		}
+	}
+
+	.label-list {
+		overflow-y: auto;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px;
+		width: 100%;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+		button {
+			cursor: pointer;
+
+			outline: none;
+			border: none;
+			padding: 0;
+			background: transparent;
+
+			font-size: 24px;
+			color: $color-gray;
+
+			&:hover {
+				color: $color-primary-dark;
+				transition: 0.2s;
+			}
+		}
+	}
+}
+
+.label-drawer.open {
+	transform: translateX(calc($recipe-list-width + $sidebar-width));
+}
+
+@media screen and (max-width: $bp-md) {
+	.label-drawer {
+		left: 0;
+		top: -30vh;
+		min-height: 28vh;
+		height: fit-content;
+		max-height: 30vh;
+		width: 100vw;
+		max-width: 100vw;
+
+		transition: top 0.2s;
+
+		ul {
+			max-height: 30vh;
+		}
+
+		.label-list {
+			max-height: 24vh;
+		}
+	}
+
+	.label-drawer.open {
+		transform: translateX(0);
+		top: $sidebar-width;
+	}
+}

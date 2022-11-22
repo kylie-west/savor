@@ -10,6 +10,7 @@ import RecipeViewer from "../components/layout/RecipeViewer";
 import Modal from "../components/modals/Modal";
 import useModal from "../hooks/useModal";
 import { modes } from "../components/modals/modalModes";
+import LabelDrawer from "../components/labels/LabelDrawer";
 
 function Dashboard({ user }) {
 	const { currentUser, setCurrentUser } = useContext(authContext);
@@ -20,11 +21,14 @@ function Dashboard({ user }) {
 		selectedRecipe,
 		setSelectedRecipe,
 		getLabels,
+		labels,
 	} = useContext(recipeContext);
 
 	const { isShowing, toggle } = useModal();
 
 	const [modalMode, setModalMode] = useState(modes.create);
+
+	const [labelDrawerOpen, setLabelDrawerOpen] = useState(false);
 
 	useEffect(() => {
 		if (user && !currentUser) {
@@ -76,7 +80,18 @@ function Dashboard({ user }) {
 					selectedRecipe={selectedRecipe}
 					setSelectedRecipe={setSelectedRecipe}
 				/>
-				<Sidebar setModalMode={setModalMode} toggleModal={toggle} />
+				<Sidebar
+					setModalMode={setModalMode}
+					toggleModal={toggle}
+					labelDrawerOpen={labelDrawerOpen}
+					setLabelDrawerOpen={setLabelDrawerOpen}
+				/>
+				<LabelDrawer
+					labels={labels}
+					open={labelDrawerOpen}
+					setOpen={setLabelDrawerOpen}
+					recipes={recipes}
+				/>
 				<RecipeList recipes={recipes} />
 				<RecipeViewer
 					selectedRecipe={selectedRecipe}

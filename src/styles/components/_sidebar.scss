@@ -3,6 +3,8 @@
 	flex-direction: column;
 	justify-content: space-between;
 
+	z-index: 100;
+
 	width: $sidebar-width;
 	padding: 10px;
 
@@ -35,12 +37,15 @@
 @media screen and (max-width: $bp-md) {
 	.sidebar {
 		flex-direction: row;
+		align-items: center;
 		width: 100vw;
-		padding: 18px 18px 0 18px;
+		max-height: $sidebar-width;
+		padding: 10px 20px;
 
 		div {
 			flex-direction: row;
-			gap: 10px;
+			align-items: center;
+			gap: 20px;
 		}
 	}
 }

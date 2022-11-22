@@ -4,12 +4,21 @@ import { useNavigate } from "react-router-dom";
 
 // The main tool/nav bar, w/ options to create a recipe, view labels, view account info, and log out
 
-function Sidebar({ setModalMode, toggleModal }) {
+function Sidebar({
+	setModalMode,
+	toggleModal,
+	labelDrawerOpen,
+	setLabelDrawerOpen,
+}) {
 	const navigate = useNavigate();
 
 	const handleClickCreate = () => {
 		setModalMode(modes.create);
 		toggleModal();
+	};
+
+	const handleClickLabels = () => {
+		setLabelDrawerOpen(!labelDrawerOpen);
 	};
 
 	return (
@@ -18,7 +27,7 @@ function Sidebar({ setModalMode, toggleModal }) {
 				<button onClick={handleClickCreate}>
 					<i className="fa-solid fa-circle-plus"></i>
 				</button>
-				<button>
+				<button onClick={handleClickLabels}>
 					<i className="fa-solid fa-tags"></i>
 				</button>
 			</div>

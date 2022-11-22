@@ -3,8 +3,8 @@ import { recipeContext } from "../../context/recipeContext";
 
 // The actual list of recipes that goes in the Recipes Bar
 
-function RecipeListItems() {
-	const { recipes, getRecipeById, selectedRecipe, setSelectedRecipe } =
+function RecipeListItems({ recipes }) {
+	const { getRecipeById, selectedRecipe, setSelectedRecipe } =
 		useContext(recipeContext);
 
 	const handleClick = (e) => {
