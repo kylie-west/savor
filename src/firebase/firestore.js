@@ -15,7 +15,7 @@ import { app } from "./firebaseInit";
 export const db = getFirestore(app);
 
 // Recipes collection ref
-const recipesRef = collection(db, "recipes");
+export const recipesRef = collection(db, "recipes");
 
 // Get all recipes
 export const getRecipes = async (uid) => {

@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { recipeContext } from "../context/recipeContext";
 import { authContext } from "../context/authContext";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { db } from "../firebase/firestore";
+import { onSnapshot, query, where, orderBy } from "firebase/firestore";
+import { recipesRef } from "../firebase/firestore";
 import Sidebar from "../components/layout/Sidebar";
 import RecipeList from "../components/layout/RecipeList";
 import RecipeViewer from "../components/layout/RecipeViewer";
@@ -42,7 +42,11 @@ function Dashboard({ user }) {
 		if (user) {
 			// Watch for changes to Recipes collection in database and update app state accordingly
 			unsubscribe = onSnapshot(
-				query(collection(db, "recipes"), where("uid", "==", user.uid)),
+				query(
+					recipesRef,
+					where("uid", "==", user.uid),
+					orderBy("title", "asc")
+				),
 				(snapshot) => {
 					const recipesArray = snapshot.docs.map((doc) => {
 						return { ...doc.data(), id: doc.id };
@@ -50,6 +54,9 @@ function Dashboard({ user }) {
 
 					updateRecipes(recipesArray);
 					getLabels(recipesArray);
+				},
+				(error) => {
+					console.error(error);
 				}
 			);
 		} else return;

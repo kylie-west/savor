@@ -31,7 +31,7 @@ export default function LabelDrawer({ labels, open, setOpen, recipes }) {
 			<div className="header">
 				<h1>{currentLabel ? `Recipes in "${currentLabel}"` : "Labels"}</h1>
 				<button onClick={handleClickBack}>
-					<i class="fa-solid fa-arrow-left"></i>
+					<i className="fa-solid fa-arrow-left"></i>
 				</button>
 			</div>
 
