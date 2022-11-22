@@ -1,8 +1,12 @@
-import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { createUser, logInWithEmail } from "../../firebase/firebaseAuth";
+import {
+	createUser,
+	logInWithEmail,
+	logInAnonymously,
+} from "../../firebase/firebaseAuth";
+import anonSetup from "../../functions/anonSetup";
 
 function LoginSignupForm({ page }) {
 	const navigate = useNavigate();
@@ -19,13 +23,21 @@ function LoginSignupForm({ page }) {
 
 	const handleSubmit = async ({ email, password }) => {
 		if (page === "signup") {
-			const { user, error } = await createUser(email, password);
+			await createUser(email, password);
 
 			navigate("/");
 		} else if (page === "login") {
 			await logInWithEmail(email, password);
+
 			navigate("/");
 		}
+	};
+
+	const handleClickDemo = async () => {
+		const { user } = await logInAnonymously();
+		const recipes = anonSetup(user.uid);
+		console.log(recipes);
+		navigate("/");
 	};
 
 	return (
@@ -74,6 +86,9 @@ function LoginSignupForm({ page }) {
 						Create an Account
 					</Link>
 				) : null}
+				<button className="btn btn-orange" onClick={handleClickDemo}>
+					Demo
+				</button>
 				<button
 					type="submit"
 					form="login-signup-form"

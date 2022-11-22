@@ -8,8 +8,9 @@
 		height: 100px;
 		max-height: 200px;
 
+		min-width: 500px;
 		width: 500px;
-		max-width: 90vw;
+		max-width: 500px;
 	}
 
 	.message {
@@ -21,6 +22,7 @@
 @media screen and (max-width: $bp-md) {
 	.recipe-form {
 		textarea {
+			min-width: 80vw;
 			max-width: 80vw;
 		}
 	}

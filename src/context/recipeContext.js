@@ -45,6 +45,10 @@ export default function RecipeContextProvider(props) {
 		dispatch({ type: "UPDATE_LABELS", payload: labels });
 	};
 
+	const clearState = () => {
+		dispatch({ type: "CLEAR_STATE", payload: null });
+	};
+
 	return (
 		<recipeContext.Provider
 			value={{
@@ -59,6 +63,7 @@ export default function RecipeContextProvider(props) {
 				getRecipeById,
 				getLabels,
 				updateLabels,
+				clearState,
 			}}>
 			{props.children}
 		</recipeContext.Provider>

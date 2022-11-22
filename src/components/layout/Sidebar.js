@@ -9,6 +9,7 @@ function Sidebar({
 	toggleModal,
 	labelDrawerOpen,
 	setLabelDrawerOpen,
+	clearState,
 }) {
 	const navigate = useNavigate();
 
@@ -19,6 +20,12 @@ function Sidebar({
 
 	const handleClickLabels = () => {
 		setLabelDrawerOpen(!labelDrawerOpen);
+	};
+
+	const handleClickLogout = () => {
+		logOut();
+		navigate("/login");
+		clearState();
 	};
 
 	return (
@@ -36,11 +43,7 @@ function Sidebar({
 				{/* <button>
 					<i className="fa-solid fa-user"></i>
 				</button> */}
-				<button
-					onClick={() => {
-						logOut();
-						navigate("/login");
-					}}>
+				<button onClick={handleClickLogout}>
 					<i className="fa-solid fa-right-from-bracket"></i>
 				</button>
 			</div>

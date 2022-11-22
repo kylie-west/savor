@@ -20,8 +20,9 @@ function Dashboard({ user }) {
 		updateRecipes,
 		selectedRecipe,
 		setSelectedRecipe,
-		getLabels,
 		labels,
+		getLabels,
+		clearState,
 	} = useContext(recipeContext);
 
 	const { isShowing, toggle } = useModal();
@@ -63,7 +64,6 @@ function Dashboard({ user }) {
 
 		// Unsubscribe when component is unmounted
 		return () => {
-			console.log("Unsubscribe");
 			unsubscribe();
 		};
 	}, []);
@@ -92,6 +92,7 @@ function Dashboard({ user }) {
 					toggleModal={toggle}
 					labelDrawerOpen={labelDrawerOpen}
 					setLabelDrawerOpen={setLabelDrawerOpen}
+					clearState={clearState}
 				/>
 				<LabelDrawer
 					labels={labels}

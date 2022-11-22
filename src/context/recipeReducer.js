@@ -64,6 +64,13 @@ export default function recipeReducer(state, action) {
 		case "UPDATE_LABELS":
 			return { ...state, labels: action.payload };
 
+		case "CLEAR_STATE":
+			return {
+				recipes: null,
+				selectedRecipe: null,
+				labels: null,
+			};
+
 		default:
 			return state;
 	}

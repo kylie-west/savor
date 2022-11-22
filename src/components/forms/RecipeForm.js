@@ -13,7 +13,15 @@ function RecipeForm({ modalMode, toggleModal }) {
 
 	// Array => string separated by newlines
 	const convertFromArray = (array) => {
-		return array.toString().split(",").join("\n");
+		let string = "";
+
+		array.forEach((str, index) => {
+			if (index < 1) {
+				string = string + str;
+			} else string = string + "\n" + str;
+		});
+
+		return string;
 	};
 
 	// String separated by newlines => array
@@ -27,10 +35,17 @@ function RecipeForm({ modalMode, toggleModal }) {
 			description: values.description,
 			ingredients: convertToArray(values.ingredients),
 			directions: convertToArray(values.directions),
-			labels: selectedRecipe.labels || [],
-			createdAt: selectedRecipe.createdAt || new Date(),
-			uid: selectedRecipe.uid || currentUser.uid,
 		};
+
+		if (!selectedRecipe) {
+			recipe.labels = [];
+			recipe.createdAt = new Date();
+			recipe.uid = currentUser.uid;
+		} else {
+			recipe.labels = selectedRecipe.labels;
+			recipe.createdAt = selectedRecipe.createdAt;
+			recipe.uid = selectedRecipe.uid;
+		}
 
 		if (modalMode === modes.create) {
 			await addRecipeToDb(recipe);
