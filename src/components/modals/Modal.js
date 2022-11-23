@@ -9,6 +9,7 @@ const Modal = ({
 	modalMode,
 	selectedRecipe,
 	setSelectedRecipe,
+	user,
 }) => {
 	const handleClickDelete = async () => {
 		await deleteRecipeFromDb(selectedRecipe.id);
@@ -42,6 +43,7 @@ const Modal = ({
 									modalMode={modalMode}
 									toggleModal={toggle}
 									isShowing={isShowing}
+									user={user}
 								/>
 							) : modalMode === modes.delete ? (
 								"Are you sure you want to delete this recipe? This is irreversible."

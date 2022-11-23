@@ -4,11 +4,9 @@ import { Formik, Field, Form } from "formik";
 import { modes } from "../modals/modalModes";
 import { addRecipeToDb, updateRecipeInDb } from "../../firebase/firestore";
 import * as Yup from "yup";
-import { authContext } from "../../context/authContext";
 
-function RecipeForm({ modalMode, toggleModal, isShowing }) {
+function RecipeForm({ modalMode, toggleModal, user }) {
 	const { selectedRecipe, setSelectedRecipe } = useContext(recipeContext);
-	const { currentUser } = useContext(authContext);
 	const [formValues, setFormValues] = useState(null);
 
 	// Array => string separated by newlines
@@ -35,23 +33,20 @@ function RecipeForm({ modalMode, toggleModal, isShowing }) {
 			description: values.description,
 			ingredients: convertToArray(values.ingredients),
 			directions: convertToArray(values.directions),
+			uid: user.uid,
 		};
 
-		if (!selectedRecipe) {
+		if (modalMode === modes.create) {
 			recipe.labels = [];
 			recipe.createdAt = new Date();
-			recipe.uid = currentUser.uid;
-		} else {
-			recipe.labels = selectedRecipe.labels;
-			recipe.createdAt = selectedRecipe.createdAt;
-			recipe.uid = selectedRecipe.uid;
-		}
 
-		if (modalMode === modes.create) {
 			await addRecipeToDb(recipe);
 			setSelectedRecipe(recipe);
 			console.log(recipe);
 		} else if (modalMode === modes.edit) {
+			recipe.labels = selectedRecipe.labels;
+			recipe.createdAt = selectedRecipe.createdAt;
+
 			await updateRecipeInDb(recipe, selectedRecipe.id);
 			setSelectedRecipe(recipe);
 		}

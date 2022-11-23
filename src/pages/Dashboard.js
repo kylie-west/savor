@@ -78,6 +78,7 @@ function Dashboard({ user }) {
 					modalMode={modalMode}
 					selectedRecipe={selectedRecipe}
 					setSelectedRecipe={setSelectedRecipe}
+					user={user}
 				/>
 				<Sidebar
 					user={user}
