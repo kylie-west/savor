@@ -6,7 +6,7 @@ import { addRecipeToDb, updateRecipeInDb } from "../../firebase/firestore";
 import * as Yup from "yup";
 import { authContext } from "../../context/authContext";
 
-function RecipeForm({ modalMode, toggleModal }) {
+function RecipeForm({ modalMode, toggleModal, isShowing }) {
 	const { selectedRecipe, setSelectedRecipe } = useContext(recipeContext);
 	const { currentUser } = useContext(authContext);
 	const [formValues, setFormValues] = useState(null);
@@ -59,6 +59,13 @@ function RecipeForm({ modalMode, toggleModal }) {
 		toggleModal();
 	};
 
+	const initialValues = {
+		title: "",
+		description: "",
+		ingredients: "",
+		directions: "",
+	};
+
 	useEffect(() => {
 		if (selectedRecipe && modalMode === modes.edit) {
 			setFormValues({
@@ -69,13 +76,6 @@ function RecipeForm({ modalMode, toggleModal }) {
 			});
 		}
 	}, [modalMode]);
-
-	const initialValues = {
-		title: "",
-		description: "",
-		ingredients: "",
-		directions: "",
-	};
 
 	const validationSchema = Yup.object({
 		title: Yup.string()

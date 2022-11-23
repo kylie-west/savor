@@ -38,7 +38,11 @@ const Modal = ({
 
 						<div className="modal-content">
 							{modalMode === modes.create || modalMode === modes.edit ? (
-								<RecipeForm modalMode={modalMode} toggleModal={toggle} />
+								<RecipeForm
+									modalMode={modalMode}
+									toggleModal={toggle}
+									isShowing={isShowing}
+								/>
 							) : modalMode === modes.delete ? (
 								"Are you sure you want to delete this recipe? This is irreversible."
 							) : modalMode === modes.labels ? (

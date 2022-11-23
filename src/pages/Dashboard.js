@@ -13,8 +13,6 @@ import { modes } from "../components/modals/modalModes";
 import LabelDrawer from "../components/labels/LabelDrawer";
 
 function Dashboard({ user }) {
-	const { currentUser, setCurrentUser } = useContext(authContext);
-
 	const {
 		recipes,
 		updateRecipes,
@@ -22,7 +20,7 @@ function Dashboard({ user }) {
 		setSelectedRecipe,
 		labels,
 		getLabels,
-		clearState,
+		clearRecipeState,
 	} = useContext(recipeContext);
 
 	const { isShowing, toggle } = useModal();
@@ -30,12 +28,6 @@ function Dashboard({ user }) {
 	const [modalMode, setModalMode] = useState(modes.create);
 
 	const [labelDrawerOpen, setLabelDrawerOpen] = useState(false);
-
-	useEffect(() => {
-		if (user && !currentUser) {
-			setCurrentUser(user);
-		}
-	}, []);
 
 	useEffect(() => {
 		let unsubscribe;
@@ -88,11 +80,13 @@ function Dashboard({ user }) {
 					setSelectedRecipe={setSelectedRecipe}
 				/>
 				<Sidebar
+					user={user}
+					recipes={recipes}
 					setModalMode={setModalMode}
 					toggleModal={toggle}
 					labelDrawerOpen={labelDrawerOpen}
 					setLabelDrawerOpen={setLabelDrawerOpen}
-					clearState={clearState}
+					clearState={clearRecipeState}
 				/>
 				<LabelDrawer
 					labels={labels}

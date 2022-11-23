@@ -14,9 +14,17 @@ export default function AuthContextProvider(props) {
 		dispatch({ type: "SET_CURRENT_USER", payload: user });
 	};
 
+	const clearAuthState = () => {
+		dispatch({ type: "CLEAR_STATE", payload: null });
+	};
+
 	return (
 		<authContext.Provider
-			value={{ currentUser: state.currentUser, setCurrentUser }}>
+			value={{
+				currentUser: state.currentUser,
+				setCurrentUser,
+				clearAuthState,
+			}}>
 			{props.children}
 		</authContext.Provider>
 	);

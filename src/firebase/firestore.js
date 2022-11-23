@@ -8,8 +8,10 @@ import {
 	updateDoc,
 	query,
 	where,
+	setDoc,
 } from "firebase/firestore";
 import { app } from "./firebaseInit";
+import { v4 as uuid } from "uuid";
 
 // Initialize Firestore service
 export const db = getFirestore(app);
@@ -51,22 +53,17 @@ export const getRecipe = async (id) => {
 };
 
 export const addRecipeToDb = async (recipeObj) => {
-	try {
-		await addDoc(recipesRef, recipeObj);
-	} catch (e) {
-		console.error("Error creating document: ", e.message);
-	}
-};
+	let recipe;
 
-export const addTestRecipeToDb = async () => {
 	try {
-		await addDoc(recipesRef, {
-			title: "test recipe",
-			description: "this is a test",
-		});
+		// const docRef = await addDoc(recipesRef, recipeObj);
+		const id = uuid();
+		await setDoc(doc(db, "recipes", id), { ...recipeObj, id });
 	} catch (e) {
 		console.error("Error creating document: ", e.message);
 	}
+
+	return recipe;
 };
 
 export const deleteRecipeFromDb = async (id) => {

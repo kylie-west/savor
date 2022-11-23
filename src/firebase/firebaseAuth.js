@@ -5,7 +5,9 @@ import {
 	signInWithEmailAndPassword,
 	signInAnonymously,
 	signOut,
+	deleteUser,
 } from "firebase/auth";
+import { deleteRecipeFromDb } from "./firestore";
 
 export const auth = getAuth(app);
 
@@ -26,6 +28,10 @@ export const createUser = async (email, password) => {
 	}
 
 	return { user, error };
+};
+
+export const getUser = () => {
+	return auth.currentUser;
 };
 
 export const logInWithEmail = async (email, password) => {
@@ -64,6 +70,27 @@ export const logInAnonymously = async () => {
 
 export const logOut = async () => {
 	await signOut(auth);
+};
+
+export const deleteUserAccount = async () => {
+	const user = auth.currentUser;
+
+	try {
+		await deleteUser(user);
+		console.log("User deleted.");
+	} catch (e) {
+		console.error(e.code, e.message);
+	}
+};
+
+export const logOutAnon = async (recipes) => {
+	const user = auth.currentUser;
+
+	if (!user.email) {
+		recipes.forEach(async (recipe) => await deleteRecipeFromDb(recipe.id));
+	}
+
+	await deleteUserAccount();
 };
 
 export const getErrorMessage = (e) => {
