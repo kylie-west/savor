@@ -1,4 +1,5 @@
 import { modes } from "../modals/modalModes";
+import Tooltip from "react-tooltip";
 
 // A toolbar with options to delete, edit, and label the selected recipe
 
@@ -20,15 +21,45 @@ function RecipeToolbar({ setModalMode, toggleModal }) {
 
 	return (
 		<div className="recipe-toolbar">
-			<button onClick={handleClickDelete} className="delete-btn">
+			<button
+				onClick={handleClickDelete}
+				className="delete-btn"
+				data-tip
+				data-for="delete">
 				<i className="fa-solid fa-trash"></i>
 			</button>
-			<button onClick={handleClickEdit}>
+			<Tooltip
+				id="delete"
+				backgroundColor="#ef4444"
+				place="bottom"
+				effect="solid"
+				className="tooltip">
+				Delete recipe
+			</Tooltip>
+
+			<button onClick={handleClickEdit} data-tip data-for="edit">
 				<i className="fa-solid fa-pen-to-square"></i>
 			</button>
-			<button onClick={handleClickLabels}>
+			<Tooltip
+				id="edit"
+				backgroundColor="#2aa59b"
+				place="bottom"
+				effect="solid"
+				className="tooltip">
+				Edit recipe
+			</Tooltip>
+
+			<button onClick={handleClickLabels} data-tip data-for="recipe-labels">
 				<i className="fa-solid fa-tag"></i>
 			</button>
+			<Tooltip
+				id="recipe-labels"
+				backgroundColor="#2aa59b"
+				place="bottom"
+				effect="solid"
+				className="tooltip">
+				Edit labels
+			</Tooltip>
 		</div>
 	);
 }

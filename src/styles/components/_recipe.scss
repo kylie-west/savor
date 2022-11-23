@@ -7,6 +7,21 @@
 		margin-bottom: 10px;
 	}
 
+	ul,
+	ol {
+		display: flex;
+		flex-direction: column;
+		list-style-position: inside;
+	}
+
+	ul {
+		gap: 5px;
+	}
+
+	ol {
+		gap: 10px;
+	}
+
 	section {
 		margin-bottom: 2.4rem;
 
@@ -19,13 +34,7 @@
 		}
 	}
 
-	.recipe-title-section {
+	.recipe-title-section h1 {
 		text-align: center;
-	}
-}
-
-@media screen and (max-width: $bp-lg) {
-	.recipe {
-		list-style-position: inside;
 	}
 }

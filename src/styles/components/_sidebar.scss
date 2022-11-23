@@ -31,6 +31,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+
+		.tooltip {
+			opacity: 1;
+			padding: 8px;
+		}
 	}
 }
 
@@ -46,6 +51,11 @@
 			flex-direction: row;
 			align-items: center;
 			gap: 20px;
+
+			.tooltip {
+				opacity: 1;
+				padding: 8px;
+			}
 		}
 	}
 }
