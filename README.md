@@ -1,6 +1,6 @@
 # Savor - An online recipe box.
 
-This web app allows users to simply store, view, and edit their own recipes.
+This web app allows users to simply store, view, and edit their own recipes. [View live here!](https://savor-recipe-box.netlify.app/)
 
 ## Create and edit recipes
 
