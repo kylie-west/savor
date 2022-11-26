@@ -82,5 +82,18 @@
 		.card {
 			width: 80vw;
 		}
+
+		.header {
+			height: 150px;
+			padding: 50px;
+		}
+
+		.btn-group {
+			gap: 0;
+
+			button {
+				min-width: fit-content;
+			}
+		}
 	}
 }
